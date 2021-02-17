@@ -5,5 +5,33 @@
 {% endblock %} 
 
 {% block content %}
-    <h1>Welcome!</h1>
+    <table class='table table-bordered'>
+        <thead>
+            <tr>
+                <td>Item</td>
+                <td>Completed?</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    {% if item.is_completed %}
+                        <td class='striker'>{{item.name}}</td>
+                        <td>
+                            <span class="text-success">{{item.is_completed}}</span>
+                        </td>
+                        {% else %}
+                        <td>{{item.name}}</td>
+                        <td>
+                            <span class="text-secondary">{{item.is_completed}}</span>
+                        </td>
+                    {% endif %}
+                    <td>
+                        <button class='btn btn-danger'>Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        <tbody>
+    </table>    
 {% endblock %}
