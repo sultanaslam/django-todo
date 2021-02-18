@@ -4,6 +4,12 @@
     Home | Todo App 
 {% endblock %} 
 
+{% if messages %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
+
 {% block content %}
     <table class='table table-bordered'>
         <thead>
