@@ -23,12 +23,16 @@
             {% for item in items %}
                 <tr>
                     {% if item.is_completed %}
-                        <td class='striker'>{{item.name}}</td>
+                        <td class='striker'>
+                            <a href="{% url 'update' item.id %}">{{item.name}}</a>
+                        </td>
                         <td>
                             <span class="text-success text-bold">Completed</span>
                         </td>
                         {% else %}
-                        <td>{{item.name}}</td>
+                        <td>
+                            <a href="{% url 'update' item.id %}">{{item.name}}</a>
+                        </td>
                         <td>
                             <a href="{% url 'mark_done' item.id %}">Mark Done</a>
                         </td>

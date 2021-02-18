@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form class="d-flex" method="POST">
+        {% csrf_token %}
+        <input class="form-control me-2" name="name" value="{{ item.name }}"/>
+        <input type='hidden' name='is_completed' value="{{ item.is_completed }}"/>
+        <button class="btn btn-outline-secondary" type="submit">Edit</button>
+    </form>
+{% endblock %}

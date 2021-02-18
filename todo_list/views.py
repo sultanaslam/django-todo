@@ -32,3 +32,18 @@ def mark_done(req, item_id):
     item.save()
     messages.success(req, ('Item Updated'))
     return redirect('home')
+
+def update(req, item_id):
+    item = get_object_or_404(List, pk=item_id)
+    if req.method == 'POST':
+        form = ListForm(req.POST or None, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            return edit_response(req, item)
+    else:
+        return edit_response(req, item)
+
+def edit_response(req, item):
+    return render(req, 'editform.html', {'item': item})
