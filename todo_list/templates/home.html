@@ -25,16 +25,18 @@
                     {% if item.is_completed %}
                         <td class='striker'>{{item.name}}</td>
                         <td>
-                            <span class="text-success">{{item.is_completed}}</span>
+                            <span class="text-success text-bold">Completed</span>
                         </td>
                         {% else %}
                         <td>{{item.name}}</td>
                         <td>
-                            <span class="text-secondary">{{item.is_completed}}</span>
+                            <a href="{% url 'mark_done' item.id %}">Mark Done</a>
                         </td>
                     {% endif %}
                     <td>
-                        <button class='btn btn-danger'>Delete</button>
+                        <a href="{% url 'delete' item.id %}">
+                            <button class='btn btn-danger'>Delete</button>
+                        </a>
                     </td>
                 </tr>
             {% endfor %}
